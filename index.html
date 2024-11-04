@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Jornada do Paulo contra a Tuberculose</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .story {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .dialogue {
+            font-style: italic;
+            color: #555;
+        }
+        .quiz-option {
+            background: #e9e9e9;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .quiz-option.correct {
+            background: #c8e6c9;
+        }
+        .quiz-option.incorrect {
+            background: #ffccbc;
+        }
+        #end-message {
+            display: none;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>A Jornada do Paulo contra a Tuberculose</h1>
+    <div class="story" id="story">
+        <p id="story-text">Era uma vez um jovem chamado Paulo, que vivia em um bairro agitado. Nos últimos dias, ele começou a perceber algo estranho: uma tosse persistente, febre constante e uma perda de peso inexplicável. Enquanto tentava ignorar os sintomas, sua amiga Ana, preocupada, decidiu falar com ele.</p>
+        <img id="story-image1" src="imagens/0.jpeg" alt="Paulo se sentindo mal">
+        <p>Paulo, eu estou realmente preocupada com você. Sabia que esses sintomas podem ser sinais de uma doença chamada tuberculose? Vou te fazer algumas perguntas sobre ela, e aí a gente vê o quanto você já sabe, tá bom? É rapidinho!<br> Paulo: "Ah, sério, Ana? Tá bom, manda ver"</p>
+
+        <!-- Quiz sobre Tuberculose -->
+        <h2>Quiz sobre Tuberculose</h2>
+        <div id="quiz">
+            <p class="dialogue"><strong>Ana:</strong> "Paulo, vamos começar do início: O que é tuberculose?"</p>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img1', this)">a) Uma doença causada por vírus</div>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img1', this)">b) Uma infecção bacteriana que afeta principalmente os pulmões</div>
+            <div class="quiz-option" onclick="checkAnswer('c', 'img1', this)">c) Uma condição genética transmitida de pais para filhos</div>
+            <button onclick="showImage('img1')">Verificar</button>
+            <img id="img1" class="answer-image" src="imagens/img1.webp" alt="Explicação da resposta correta" style="display: none;" />
+
+            <p class="dialogue"><strong>Ana:</strong> "Próxima pergunta: Como a tuberculose é transmitida?"</p>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img2', this)">a) Por contato com a pele</div>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img2', this)">b) Pelo ar, através da tosse ou espirro</div>
+            <div class="quiz-option" onclick="checkAnswer('c', 'img2', this)">c) Pelo consumo de água contaminada</div>
+            <button onclick="showImage('img2')">Verificar</button>
+            <img id="img2" class="answer-image" src="imagens/img4.webp" alt="Explicação da resposta correta" style="display: none;" />
+
+            <p class="dialogue"><strong>Ana:</strong> "Muito bem! Próxima pergunta: Quais são os principais sintomas da tuberculose?"</p>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img3', this)">a) Dor de cabeça e tontura</div>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img3', this)">b) Tosse persistente, febre e perda de peso</div>
+            <div class="quiz-option" onclick="checkAnswer('c', 'img3', this)">c) Dor muscular e coceira</div>
+            <button onclick="showImage('img3')">Verificar</button>
+            <img id="img3" class="answer-image" src="imagens/img5.webp" alt="Explicação da resposta correta" style="display: none;" />
+
+            <p class="dialogue"><strong>Ana:</strong> "E se a gente encontrar alguém com tuberculose, o que devemos fazer?"</p>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img4', this)">a) Isolar totalmente a pessoa</div>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img4', this)">b) Ajudar a pessoa a procurar tratamento e tomar os cuidados indicados</div>
+            <div class="quiz-option" onclick="checkAnswer('c', 'img4', this)">c) Evitar o contato para sempre</div>
+            <button onclick="showImage('img4')">Verificar</button>
+            <img id="img4" class="answer-image" src="imagens/0.jpeg" alt="Explicação da resposta correta" style="display: none;" />
+
+            <p class="dialogue"><strong>Ana:</strong> "Vamos continuar, Paulo. Próxima pergunta: Qual é o exame mais comum para detectar a tuberculose?"</p>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img5', this)">a) Exame de sangue</div>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img5', this)">b) Teste de escarro</div>
+            <div class="quiz-option" onclick="checkAnswer('c', 'img5', this)">c) Ultrassonografia</div>
+            <button onclick="showImage('img5')">Verificar</button>
+            <img id="img5" class="answer-image" src="imagens/img7.jpeg" alt="Explicação da resposta correta" style="display: none;" />
+
+            <p class="dialogue"><strong>Ana:</strong> "E como é o tratamento para tuberculose?"</p>
+            <div class="quiz-option" onclick="checkAnswer('a', 'img6', this)">a) Uso de antibióticos por pelo menos 6 meses</div>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img6', this)">b) Repouso absoluto por 3 semanas</div>
+            <div class="quiz-option" onclick="checkAnswer('c', 'img6', this)">c) Tratamento com analgésicos</div>
+            <button onclick="showImage('img6')">Verificar</button>
+            <img id="img6" class="answer-image" src="imagens/img3.webp" alt="Explicação da resposta correta" style="display: none;" />
+
+            <p class="dialogue"><strong>Ana:</strong> "Isso mesmo! Agora, Paulo, você sabe qual é uma medida eficaz para prevenir a tuberculose?"</p>
+            <div class="quiz-option" onclick="checkAnswer('a', 'img7', this)">a) Vacinação com a vacina BCG</div>
+            <div class="quiz-option" onclick="checkAnswer('b', 'img7', this)">b) Beber água potável</div>
+            <div class="quiz-option" onclick="checkAnswer('c', 'img7', this)">c) Uso de repelentes</div>
+            <button onclick="showImage('img7')">Verificar</button>
+            <img id="img7" class="answer-image" src="imagens/img9.jpeg" alt="Explicação da resposta correta" style="display: none;" />
+        </div>
+        <div id="end-message">Parabéns, Paulo! Você aprendeu muito sobre tuberculose!</div>
+    </div>
+
+    <script>
+        function checkAnswer(correctAnswer, imgId, option) {
+            const selectedOption = option;
+            const options = selectedOption.parentNode.children;
+            // Limpa as respostas anteriores
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('correct', 'incorrect');
+            }
+            // Adiciona a classe correta ou incorreta
+            if (selectedOption.innerHTML.charAt(0) === correctAnswer) {
+                selectedOption.classList.add('correct');
+            } else {
+                selectedOption.classList.add('incorrect');
+            }
+        }
+
+        function showImage(imgId) {
+            const img = document.getElementById(imgId);
+            img.style.display = 'block';
+            const quiz = document.getElementById('quiz');
+            const endMessage = document.getElementById('end-message');
+            quiz.addEventListener('click', () => {
+                const totalQuestions = 6;
+                const answeredQuestions = document.querySelectorAll('.answer-image[style="display: block;"]').length;
+                if (answeredQuestions === totalQuestions) {
+                    endMessage.style.display = 'block';
+                }
+            });
+        }
+    </script>
+<!-- Segunda Parte da História -->
+<p>Paulo e Ana vão ao posto de saúde. Ao chegarem, a médica parece ocupada e, quando Paulo explica seus sintomas, ela diz:</p>
+<p class="dialogue"><strong>Médica:</strong> "Volte para casa e tome um antitérmico. É só uma virose."</p>
+<p>Paulo, frustrado, sai sem entender a gravidade da situação.</p>
+<img src="imagens/1.jpeg" alt="">
+<p class="dialogue"><strong>Paulo:</strong> (saindo do consultório, com expressão frustrada) "Eu não consigo acreditar que a médica me mandou voltar pra casa e tomar antitérmico. Só uma virose? Sinto que algo está muito errado!"</p>
+<p class="dialogue"><strong>Ana:</strong> "Eu também achei estranho. Você estava tão mal, e ela nem fez mais perguntas. É frustrante."</p>
+<p class="dialogue"><strong>Paulo:</strong> "Parece que ninguém leva a sério os sintomas. Eu só queria entender o que está acontecendo comigo."</p>
+<p class="dialogue"><strong>Ana:</strong> "Você sabe, Paulo, a tuberculose é vista de forma muito preconceituosa em muitos lugares. Algumas pessoas ainda associam a doença à pobreza e a condições de vida insalubres."</p>
+<p class="dialogue"><strong>Paulo:</strong> "É verdade. Fiquei pensando se a médica não achou que eu sou só mais um caso qualquer..."</p>
+<p class="dialogue"><strong>Ana:</strong> "Sim, e isso pode afetar o tratamento. Muitas pessoas que precisam de ajuda não buscam atendimento porque têm medo do estigma. Isso é muito comum, principalmente entre populações negras e marginalizadas."</p>
+<p class="dialogue"><strong>Paulo:</strong> "Isso é muito injusto. As pessoas deveriam ser tratadas com dignidade, independentemente de sua condição de vida."</p>
+<p class="dialogue"><strong>Ana:</strong> "Exatamente! E o que é mais preocupante é que, mesmo com tratamento gratuito disponível, o preconceito e a falta de informação ainda dificultam o acesso ao diagnóstico e ao tratamento adequado."</p>
+<p class="dialogue"><strong>Paulo:</strong> "Eu só quero saber se estou realmente doente. Não posso simplesmente ignorar isso."</p>
+<p class="dialogue"><strong>Ana:</strong> "Você está certo. Talvez devêssemos procurar outra opinião. É importante que você se sinta ouvido e compreendido. Vamos tentar encontrar um lugar onde as pessoas estejam mais dispostas a ajudar."</p>
+<p class="dialogue"><strong>Paulo:</strong> "Sim, precisamos fazer isso. Não vou deixar que o estigma me impeça de buscar o que realmente preciso."</p>
+
+        
+        <!-- Terceira Parte da História -->
+         <h2>1. Falta de Investimento em Saúde Pública
+        </h2>
+        <p>Os dias se passam e, em vez de melhorar, Paulo piora. A tosse se torna mais intensa e ele sente falta de ar. Decidido a buscar ajuda novamente, ele retorna ao posto de saúde.</p>
+        <img id="story-image3" src="imagens/02.jpeg" alt="Paulo piorando">
+        <!-- Quarta Parte da História -->
+<!-- Quarta Parte da História --><p class="dialogue"><strong>Paulo:</strong> [entrando no posto de saúde] "Olá, eu voltei. Minha tosse piorou e estou tendo muita dificuldade para respirar."</p>
+<p class="dialogue"><strong>Atendente:</strong> "Oi, Paulo! Sinto muito em ouvir isso. Você já tinha vindo aqui antes, certo? Vamos fazer o seu cadastro novamente e encaminhar você para o médico."</p>
+<p class="dialogue"><strong>Paulo:</strong> "Sim, vim aqui algumas semanas atrás. Eu achei que ia melhorar, mas não consigo mais dormir direito e a tosse está insuportável."</p>
+<p class="dialogue"><strong>Atendente:</strong> "Entendo. É importante que você seja avaliado. Vou marcar você para uma consulta agora. Você já realizou algum exame recentemente?"</p>
+<p class="dialogue"><strong>Paulo:</strong> "Não, ainda não fiz nenhum exame. Eu só tomei algumas medicações que me receitaram da última vez."</p>
+<p class="dialogue"><strong>Atendente:</strong> "Certo, então hoje faremos exames para entender melhor o que está acontecendo. Por favor, aguarde um momento enquanto eu chamo o médico."</p>
+<p class="dialogue"><strong>[Alguns minutos depois, o médico entra na sala]</strong></p>
+<p class="dialogue"><strong>Médico:</strong> "Olá, Paulo! O que está acontecendo? Como você está se sentindo?"</p>
+<p class="dialogue"><strong>Paulo:</strong> "Olá, doutor. Eu estou me sentindo muito mal. A tosse está mais intensa e sinto que não consigo respirar direito. Estou preocupado."</p>
+<p class="dialogue"><strong>Médico:</strong> "Entendo sua preocupação. Vamos realizar alguns exames para verificar a sua condição e ver o que está causando esses sintomas. Você está disposto a fazer isso?"</p>
+<p class="dialogue"><strong>Paulo:</strong> "Sim, claro. O que preciso fazer?"</p>
+<p class="dialogue"><strong>Médico:</strong> "Primeiro, vou te encaminhar para uma radiografia do tórax e alguns exames de sangue. Assim que tivermos os resultados, poderemos discutir o tratamento adequado."</p>
+<p class="dialogue"><strong>Paulo:</strong> "Obrigado, doutor. Estou ansioso para descobrir o que está acontecendo."</p>
+<p class="dialogue"><strong>Médico:</strong> "Sem problema, Paulo. Vamos cuidar disso. Fique tranquilo."</p>
+<p class="dialogue"><strong>Paulo:</strong> "Obrigado, doutor. Estou muito preocupado. O que posso fazer enquanto isso?"</p>
+<p class="dialogue"><strong>Médico:</strong> "É importante que você não se preocupe excessivamente e tente descansar. Vamos descobrir o que está acontecendo o mais rápido possível."</p>
+<p class="dialogue"><strong>Paulo:</strong> "Ok, Doutor."</p>
+
+<h2>Como a Tuberculose é Tratada
+</h2>
+
+        <!-- Quarta Parte da História -->
+        <p>[Após alguns dias, os resultados chegam. O médico informa que Paulo está com tuberculose.]
+
+            [No consultório médico, Paulo aguarda ansiosamente os resultados. O médico entra, com uma expressão séria.].</p>
+        <img id="story-image4" src="imagens/3.jpeg" alt="Diagnóstico de Tuberculose">
+        <div class="dialogo">
+            <p class="personagem">Médico:</p>
+            <p>Olá, Paulo. Eu tenho os resultados dos seus exames.</p>
+    
+            <p class="personagem">Paulo:</p>
+            <p>E então, doutor? O que eles mostraram? Estou preocupado.</p>
+    
+            <p class="personagem">Médico:</p>
+            <p>Infelizmente, a análise revelou que você está com tuberculose.</p>
+    
+            <p class="personagem">Paulo:</p>
+            <p>[com a voz trêmula] Tuberculose?  O que eu vou fazer agora?</p>
+    
+            <p class="personagem">Médico:</p>
+            <p>Sim, Sim, como você já sabe, A tuberculose (TB) é uma doença infecciosa causada pela bactéria Mycobacterium tuberculosis e é considerada uma das doenças negligenciadas que afetam desproporcionalmente populações vulneráveis, como pessoas negras em diversas partes do mundo, é uma condição séria, mas é tratável. Precisaremos começar o tratamento imediatamente.</p>
+    
+            <p class="personagem">Paulo:</p>
+            <p>[desapontado] Mas... por que isso aconteceu comigo? como adqueri?.</p>
+    
+            <p class="personagem">Médico:</p>
+<p>A transmissão da tuberculose ocorre principalmente pelo ar, através de gotículas expelidas pela tosse, espirros ou fala de uma pessoa infectada. Pessoas em condições de superlotação, com acesso limitado à ventilação adequada e em ambientes onde é difícil manter cuidados de higiene, são mais suscetíveis à infecção. Essas condições são comuns em comunidades de baixa renda, onde muitas pessoas negras vivem, devido a desigualdades históricas e estruturais.</p>    
+            <p class="personagem">Paulo:</p>
+            <p>Eu só queria ser ouvido e tratado com respeito. Não sou apenas um número ou mais um caso na estatística.</p>
+    
+            <p class="personagem">Médico:</p>
+            <p>Você está certo. Apesar da disponibilidade de tratamento gratuito em muitos lugares, o estigma em torno da tuberculose e a falta de conhecimento sobre a doença ainda dificultam o acesso ao diagnóstico e tratamento. Em muitos sistemas de saúde, há uma visão preconceituosa sobre a tuberculose, que tende a associá-la à pobreza e a condições de vida insalubres. Isso afeta negativamente o atendimento, principalmente entre populações negras e marginalizadas, que podem ser tratadas com menor prioridade ou sofrer preconceito por parte de profissionais de saúde.
+
+                Cada paciente é único e merece atenção e dignidade. Vou garantir que você receba o suporte necessário durante o tratamento. Temos equipes de apoio que podem ajudar você a entender mais sobre a doença e a lidar com o estigma.</p>
+    
+            <p class="personagem">Paulo:</p>
+            <p>Isso é um alívio, mas ainda me sinto tão perdido. E se as pessoas souberem? O que vão pensar de mim?</p>
+    
+            <p class="personagem">Médico:</p>
+            <p>A percepção das pessoas pode ser cruel, mas lembre-se de que você não está sozinho. A tuberculose é uma doença que afeta muitas pessoas. O importante agora é focar na sua recuperação e no tratamento adequado.</p>
+    
+            <p class="personagem">Paulo:</p>
+            <p>Espero que isso possa me ajudar. Não quero que essa doença defina quem eu sou.</p>
+    
+            <p class="personagem">Médico:</p>
+            <p>Isso mesmo, Paulo. A tuberculose pode ser tratada, e você pode levar uma vida saudável novamente. Vamos trabalhar juntos para garantir que isso aconteça.</p>
+        </div>
+    
+
+<h2> Resistência a Medicamentos
+</h2>
+
+        <!-- Quarta Parte da História -->
+
+
+
+        <!-- Quinta Parte da História -->
+        <p>Paulo tenta se manter positivo, mas a discriminação o abala. Ao ir buscar o tratamento, ele é tratado como um pária.</p>
+        <p>Com isso, Paulo sente-se desamparado e começa a resistir ao tratamento.</p>
+        <img id="story-image5" src="imagens/Image 004.png" alt="Discriminação no atendimento">
+
+        <!-- Mensagem Final -->
+        <div id="end-message">
+            <p>A tuberculose é uma batalha que pode ser vencida com cuidado, conhecimento e compaixão. Vamos juntos combater o estigma e promover a saúde para todos!</p>
+        </div>
+    </div>
+    <div class="dialogue">
+        <div class="character">Paulo:</div>
+        <div class="speech">(aproximando-se da mesa, visivelmente abatido) "Olá, eu vim buscar meu medicamento."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Profissional de saúde:</div>
+        <div class="speech">(sem olhar nos olhos) "Aqui está. Pegue seu medicamento e vá. E, por favor, fique longe das outras pessoas para evitar contágio."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Paulo:</div>
+        <div class="speech">(sente um frio na barriga) "Espere um momento. Você não acha que isso é um pouco... duro? Estou tentando me cuidar, e você me trata como se eu fosse um pária."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Profissional de saúde:</div>
+        <div class="speech"> "Não é pessoal, Paulo. É apenas uma precaução. A tuberculose é contagiosa, e precisamos proteger os outros."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Paulo:</div>
+        <div class="speech"> "Mas eu sou uma pessoa, não um número. Estou aqui buscando ajuda, e isso me faz sentir pior. Não quero mais pegar esse medicamento."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Profissional de saúde:</div>
+        <div class="speech"> "Olha, eu entendo que seja difícil, mas você precisa continuar o tratamento. É para a sua saúde e a saúde dos outros."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Paulo:</div>
+        <div class="speech"> "A saúde? Como posso me sentir saudável quando me tratam como se eu fosse uma ameaça? Esse estigma só faz com que eu queira resistir ao tratamento."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Profissional de saúde:</div>
+        <div class="speech">(com um tom mais suave) "Eu compreendo sua frustração. Mas resistir ao tratamento só vai piorar a situação. Precisamos de você saudável e ativo, não apenas para você, mas para todos ao seu redor."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Paulo:</div>
+        <div class="speech"> "É fácil para você dizer. Você não está passando por isso. O que acontece se eu não tomar o medicamento? Não parece haver diferença. Eu só me sinto mais isolado."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Profissional de saúde:</div>
+        <div class="speech"> "Se você não tomar o medicamento, a tuberculose pode se agravar e se tornar mais difícil de tratar. Eu não quero que você passe por isso. Dê uma chance ao tratamento."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Paulo:</div>
+        <div class="speech">(hesitante) "Talvez... talvez eu tente, mas preciso de um apoio melhor. Eu não posso fazer isso sozinho."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Profissional de saúde:</div>
+        <div class="speech"> "Você tem razão. Vou anotar isso e pedir que um profissional de saúde mental entre em contato com você. É importante que você se sinta apoiado."</div>
+    </div>
+
+    <div class="dialogue">
+        <div class="character">Paulo:</div>
+        <div class="speech">(suspiros) "Ok, vou tentar novamente. Mas preciso que me vejam como uma pessoa, não como um pária."</div>
+    </div>
+    <div>
+
+    </div>
+    <h2>Conclusão</h2>
+    <p>
+        A jornada de Paulo contra a tuberculose revela a complexidade e os desafios enfrentados por muitos ao lidarem com essa doença. Desde a identificação dos sintomas até o tratamento, Paulo enfrenta não apenas as consequências físicas da tuberculose, mas também o estigma social e a discriminação associada à doença. Essa narrativa destaca a importância de uma abordagem empática e informada no atendimento à saúde, onde cada paciente é tratado com dignidade e respeito, independentemente de sua condição socioeconômica. O suporte psicológico e a conscientização sobre a tuberculose são essenciais para garantir que indivíduos como Paulo não apenas recebam o tratamento adequado, mas também se sintam valorizados e apoiados em sua recuperação. A luta de Paulo nos lembra que, além da medicina, a compaixão e a compreensão são fundamentais na luta contra doenças negligenciadas e na promoção da saúde pública.
+</p> </div>
+</body>
+</html>
